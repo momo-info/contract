@@ -52,6 +52,11 @@ contract ProfileNFT is ERC721URIStorage, Ownable {
         uint256 profileId,
         string memory tokenURI
     ) external onlyFactory returns (uint256) {
+        require(
+            _ownerOf(profileId) == address(0),
+            "Profile with this ID already exists"
+        );
+
         _mint(to, profileId);
         _setTokenURI(profileId, tokenURI);
 

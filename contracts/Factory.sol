@@ -126,7 +126,7 @@ contract Factory is Ownable, Pausable {
         uint256 profileId = tweetNFT.getTweetProfileId(tweetId);
 
         // Recalculate the profile score
-        calculateAndUpdateScore(profileId);
+        calculateAndUpdateScore(profileId, tweetId);
 
         emit EngagementUpdated(tweetId, likes, retweets, comments);
     }
@@ -135,7 +135,10 @@ contract Factory is Ownable, Pausable {
      * @dev Calculate and update the score for a profile based on all its tweets
      * @param profileId The profile ID to update
      */
-    function calculateAndUpdateScore(uint256 profileId) public whenNotPaused {
+    function calculateAndUpdateScore(
+        uint256 profileId,
+        uint256 tweetId
+    ) public whenNotPaused {
         uint256 totalScore = 0;
 
         // In a real implementation, you would iterate through all tweets owned by the profile
@@ -148,8 +151,12 @@ contract Factory is Ownable, Pausable {
 
         // Example calculation for a single tweet (in reality would sum all tweets):
         // uint256 tweetId = someTweetIdForProfile;
-        // (uint256 likes, uint256 retweets, uint256 comments) = tweetNFT.getTweetEngagement(tweetId);
-        // totalScore += (likes * likeWeight) + (retweets * retweetWeight) + (comments * commentWeight);
+        (uint256 likes, uint256 retweets, uint256 comments) = tweetNFT
+            .getTweetEngagement(tweetId);
+        totalScore +=
+            (likes * likeWeight) +
+            (retweets * retweetWeight) +
+            (comments * commentWeight);
 
         // For demonstration, we'll just use a placeholder calculation
         // In a real implementation, you would sum scores from all tweets

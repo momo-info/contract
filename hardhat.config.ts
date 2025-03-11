@@ -28,7 +28,6 @@ const config: HardhatUserConfig = {
   //   apiUrl: "https://sourcify-api-monad.blockvision.org",
   //   browserUrl: "https://testnet.monadexplorer.com/",
   // },
-
   // To avoid errors from Etherscan
   // etherscan: {
   //   enabled: false,

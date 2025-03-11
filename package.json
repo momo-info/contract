@@ -2,7 +2,9 @@
   "name": "hardhat-project",
   "scripts": {
     "format": "prettier --write --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",
-    "deploy:testnet": "hardhat run scripts/deploy.ts"
+    "deploy:testnet": "hardhat run scripts/deploy.ts",
+    "create-profile": "hardhat run scripts/create-profile.ts",
+    "create-tweet": "hardhat run scripts/create-tweet.ts"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
