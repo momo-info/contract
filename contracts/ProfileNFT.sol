@@ -27,8 +27,10 @@ contract ProfileNFT is ERC721URIStorage, Ownable {
     event ScoreUpdated(uint256 indexed profileId, uint256 newScore);
 
     constructor(
-        address initialOwner
-    ) ERC721("SocialProfile", "SPROF") Ownable(initialOwner) {}
+        address _factoryAddress
+    ) ERC721("SocialProfile", "SPROF") Ownable(msg.sender) {
+        factoryAddress = _factoryAddress;
+    }
 
     // Modifier to ensure only the factory can call certain functions
     modifier onlyFactory() {

@@ -1,9 +1,15 @@
 import type { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox-viem";
 import { vars } from "hardhat/config";
+import "@typechain/hardhat";
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-ignition-ethers";
+import "hardhat-contract-sizer";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
+  defaultNetwork: "monadTestnet",
   networks: {
     monadTestnet: {
       url: vars.get("MONAD_RPC_URL"),
@@ -11,24 +17,22 @@ const config: HardhatUserConfig = {
       chainId: Number(vars.get("MONAD_CHAIN_ID")),
     },
   },
-  sourcify: {
-    enabled: true,
-    apiUrl: "https://sourcify-api-monad.blockvision.org",
-    browserUrl: "https://testnet.monadexplorer.com/",
+  contractSizer: {
+    alphaSort: true,
+    disambiguatePaths: false,
+    runOnCompile: true,
+    strict: true,
   },
-  settings: {
-    optimizer: {
-      enabled: true,
-      runs: 10000,
-      details: {
-        yul: true,
-      },
-    },
-  },
+  // sourcify: {
+  //   enabled: true,
+  //   apiUrl: "https://sourcify-api-monad.blockvision.org",
+  //   browserUrl: "https://testnet.monadexplorer.com/",
+  // },
+
   // To avoid errors from Etherscan
-  etherscan: {
-    enabled: false,
-  },
+  // etherscan: {
+  //   enabled: false,
+  // },
 };
 
 export default config;

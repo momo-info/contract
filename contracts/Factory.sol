@@ -40,17 +40,28 @@ contract Factory is Ownable, Pausable {
     );
 
     constructor() Ownable(msg.sender) {
-        // Deploy child contracts
-        profileNFT = new ProfileNFT(address(this));
-        tweetNFT = new TweetNFT(address(this));
+        // // Deploy child contracts
+        // profileNFT = new ProfileNFT(address(this));
+        // tweetNFT = new TweetNFT(address(this));
+        // // Set factory address in child contracts
+        // profileNFT.setFactoryAddress(address(this));
+        // tweetNFT.setFactoryAddress(address(this));
+        // // Transfer ownership of child contracts to the deployer
+        // profileNFT.transferOwnership(msg.sender);
+        // tweetNFT.transferOwnership(msg.sender);
+    }
 
-        // Set factory address in child contracts
-        profileNFT.setFactoryAddress(address(this));
-        tweetNFT.setFactoryAddress(address(this));
-
-        // Transfer ownership of child contracts to the deployer
-        profileNFT.transferOwnership(msg.sender);
-        tweetNFT.transferOwnership(msg.sender);
+    /**
+     * @dev Initialize the ProfileNFT and TweetNFT contract addresses
+     * @param _profileNFTAddress The address of the ProfileNFT contract
+     * @param _tweetNFTAddress The address of the TweetNFT contract
+     */
+    function initializeNFTContracts(
+        address _profileNFTAddress,
+        address _tweetNFTAddress
+    ) external onlyOwner {
+        profileNFT = ProfileNFT(_profileNFTAddress);
+        tweetNFT = TweetNFT(_tweetNFTAddress);
     }
 
     /**

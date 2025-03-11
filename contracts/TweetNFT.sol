@@ -28,8 +28,10 @@ contract TweetNFT is ERC721URIStorage, Ownable {
     address public factoryAddress;
 
     constructor(
-        address initialOwner
-    ) ERC721("SocialTweet", "STWT") Ownable(initialOwner) {}
+        address _factoryAddress
+    ) ERC721("SocialTweet", "STWT") Ownable(msg.sender) {
+        factoryAddress = _factoryAddress;
+    }
 
     // Modifier to ensure only the factory can call certain functions
     modifier onlyFactory() {

@@ -1,15 +1,29 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "format": "prettier --write --plugin=prettier-plugin-solidity 'contracts/**/*.sol'"
+    "format": "prettier --write --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",
+    "deploy:testnet": "hardhat run scripts/deploy.ts"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.10",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "4",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.10",
+    "chai": "4",
     "hardhat": "^2.22.19",
+    "hardhat-contract-sizer": "^2.10.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-solidity": "^1.4.2"
+    "prettier-plugin-solidity": "^1.4.2",
+    "typechain": "^8.3.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.2.0"
+    "@openzeppelin/contracts": "^5.2.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   }
 }
